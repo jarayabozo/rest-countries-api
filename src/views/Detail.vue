@@ -7,7 +7,7 @@
           |  Back
       .country-grid
         figure
-          img(v-lazy="country.flag")
+          img(v-lazy="country.flag" :alt="country.name")
         .country-content
           h1(v-text="country.name")
           .country-content-detail

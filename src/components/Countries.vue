@@ -4,7 +4,7 @@
       .countries-grid
         .country(v-if="countries.length > 0" v-for="(country, index) in countries")
           router-link(:to="{ name: 'detail', params: { country: country.name.trim().toLowerCase() } }")
-            img(v-lazy="country.flag")
+            img(v-lazy="country.flag" :alt="country.name")
             .country-info
               h2(v-text="country.name")
               p

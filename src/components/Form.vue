@@ -9,6 +9,7 @@
             id='search',
             autocomplete="off",
             placeholder='Search for a country...',
+            aria-label="search country"
             v-model="country"
           )
         .form-select
