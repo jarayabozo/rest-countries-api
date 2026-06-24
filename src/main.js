@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import axios from 'axios'
@@ -8,19 +8,25 @@ import VueLazyload from 'vue-lazyload'
 // Import css global
 import "./assets/scss/app.scss"
 
-Vue.use(VueAxios, axios)
-Vue.use(VueLazyload, {
+const app = createApp(App)
+
+app.use(router)
+app.use(store)
+app.use(VueAxios, axios)
+app.use(VueLazyload, {
   preLoad: 5,
   // error: '/image/error.png',
   loading: './images/loader.gif',
   attempt: 1
 })
 
-Vue.prototype.$appName = "Where in the world?";
+app.config.globalProperties.$appName = "Where in the world?";
 
-Vue.config.productionTip = false
+app.filter = function(name, fn) {
+  app.config.globalProperties[`$${name}`] = fn
+}
 
-Vue.filter('toFormatNumber', function (value) {
+app.filter('toFormatNumber', function (value) {
   if (typeof value !== "number") {
     return value;
   }
@@ -28,8 +34,4 @@ Vue.filter('toFormatNumber', function (value) {
   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
 });
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+app.mount('#app')

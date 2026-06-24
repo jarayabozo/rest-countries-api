@@ -75,76 +75,95 @@ export default {
   }
 }
 </script>
-<style lang="sass">
-  .form
-    margin-top: 25px
-    &-grid
-      display: grid
-      @media screen and (min-width: 768px)
-        grid-template-columns: 1fr 1fr
-    &-search
-      background-color: var(--white)
-      box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px
-      border-radius: 5px
-      padding-left: 42px
-      margin-bottom: 16px
-      position: relative
-      @media screen and (min-width: 768px)
-        width: 360px
-      input
-        border: none
-        display: inline-block
-        padding: 14.5px
-        width: 100%
-        outline: none
-      &::before
-        content: "\f002"
-        font-family: "FontAwesome"
-        display: inline-block
-        padding: 14.5px
-        vertical-align: middle
-        position: absolute
-        left: 22px
-    &-select
-      background-color: var(--white)
-      box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px
-      border-radius: 5px
-      display: inline-block
-      width: 200px
-      margin-top: 16px
-      position: relative
-      @media screen and (min-width: 768px)
-        margin-top: 0
-        margin-bottom: 16px
-        justify-self: end
-      .label
-        padding: 14.5px 20px
-        &:before
-          font-family: "FontAwesome"
-          content: "\f078"
-          position: absolute
-          right: 20px
-          font-weight: 300
-      .items
-        position: absolute
-        background-color: var(--white)
-        box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px
-        top: 60px
-        left: 0
-        right: 0
-        list-style: none
-        margin: 0
-        padding: 10px 0
-        transition: all .3s
-        visibility: hidden
-        &.active
-          visibility: visible
-        .item
-          &:hover
-            background-color: var(--very-light-gray)
-          a
-            color: var(--dark-blue)
-            text-decoration: none
-            padding: 4px 20px
-            display: block
+<style lang="scss">
+.form {
+  margin-top: 25px;
+
+  &-grid {
+    display: grid;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &-search {
+    background-color: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px;
+    border-radius: 5px;
+    padding-left: 42px;
+    margin-bottom: 16px;
+    position: relative;
+    @media screen and (min-width: 768px) {
+      width: 360px;
+    }
+    input {
+      border: none;
+      display: inline-block;
+      padding: 14.5px;
+      width: 100%;
+      outline: none;
+    }
+    &::before {
+      content: "\f002";
+      font-family: "FontAwesome";
+      display: inline-block;
+      padding: 14.5px;
+      vertical-align: middle;
+      position: absolute;
+      left: 22px;
+    }
+  }
+
+  &-select {
+    background-color: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 200px;
+    margin-top: 16px;
+    position: relative;
+    @media screen and (min-width: 768px) {
+      margin-top: 0;
+      margin-bottom: 16px;
+      justify-self: end;
+    }
+    .label {
+      padding: 14.5px 20px;
+      &:before {
+        font-family: "FontAwesome";
+        content: "\f078";
+        position: absolute;
+        right: 20px;
+        font-weight: 300;
+      }
+    }
+    .items {
+      position: absolute;
+      background-color: var(--white);
+      box-shadow: rgba(0, 0, 0, 0.1) 0 0 7px;
+      top: 60px;
+      left: 0;
+      right: 0;
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      transition: all .3s;
+      visibility: hidden;
+      &.active {
+        visibility: visible;
+      }
+      .item {
+        &:hover {
+          background-color: var(--very-light-gray);
+        }
+        a {
+          color: var(--dark-blue);
+          text-decoration: none;
+          padding: 4px 20px;
+          display: block;
+        }
+      }
+    }
+  }
+}
 </style>

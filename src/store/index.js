@@ -1,15 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createStore } from 'vuex'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
- 
-Vue.use(Vuex)
-Vue.use(VueAxios, axios)
 
-export default new Vuex.Store({
+export default createStore({
   state: {
     mode: 'light',
-    countries: null,
+    countries: [],
     error: null
   },
   mutations: {
@@ -21,15 +16,12 @@ export default new Vuex.Store({
     },
     setError(state, payload) {
       state.error = payload
-    },
-    setMode(state, payload){
-      state.error = payload
     }
   },
   actions: {
     async getCountriesByRegion(context, country) {
       try {
-        const response = await Vue.axios.get(`https://restcountries.eu/rest/v2/region/${country}`)
+        const response = await axios.get(`https://restcountries.eu/rest/v2/region/${country}`)
         context.commit("setCountries", response.data);
       }catch(error) {
         console.error(error);
@@ -37,7 +29,7 @@ export default new Vuex.Store({
     },
     async getCountries(context) {
       try {
-        const response = await Vue.axios.get(`https://restcountries.eu/rest/v2/all`)
+        const response = await axios.get(`https://restcountries.eu/rest/v2/all`)
         context.commit("setCountries", response.data);
       }catch(error) {
         console.error(error);
@@ -45,7 +37,7 @@ export default new Vuex.Store({
     },
     async getCountryByName(context, country) {
       try {
-        const response = await Vue.axios.get(`https://restcountries.eu/rest/v2/name/${country}`)
+        const response = await axios.get(`https://restcountries.eu/rest/v2/name/${country}`)
         context.commit("setCountries", response.data);
         context.commit("setError", null);
       } catch (error) {
@@ -53,9 +45,6 @@ export default new Vuex.Store({
         context.commit("setError", error.response.data.message);
         console.clear()
       }
-    },
-    updateMode(context) {
-      this.isActive = !this.isActive;
     }
   },
   modules: {
