@@ -16,7 +16,7 @@ app.use(VueAxios, axios)
 app.use(VueLazyload, {
   preLoad: 5,
   // error: '/image/error.png',
-  loading: './images/loader.gif',
+  loading: '/images/loader.gif',
   attempt: 1
 })
 
